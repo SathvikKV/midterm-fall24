@@ -24,6 +24,7 @@ public class MyCircularQueue {
         queue = new int[k];
         front = -1;
         rear = -1;
+        size =0;
 
 
 
