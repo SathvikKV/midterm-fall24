@@ -6,19 +6,25 @@ import java.util.LinkedList;
 
 public class MyCircularQueue {
 
-    int k = 0;
-    int front = 0;
-    int rear = 0;
+    public int[] queue;
+    public int front;
+    public int rear;
+    public int size =0;
 
-    LinkedList<Integer> q = new LinkedList<>();
+
+
+
+
+
 
 
 
     public MyCircularQueue(int k) {
-        this.k =k;
-        for(int i = 0; i<k;i++){
-            q.add(i);
-        }
+
+        queue = new int[k];
+        front = -1;
+        rear = -1;
+
 
 
     }
@@ -26,10 +32,10 @@ public class MyCircularQueue {
     public boolean enQueue(int value) {
 
 
-        if(q.isEmpty()) return false;
+        if(queue.isEmpty()) return false;
 
-        q.offer(value);
-        rear = q.indexOf(value);
+        queue.offer(value);
+        rear = queue.indexOf(value);
         int temp = 0;
         front = temp;
         rear = front;
@@ -40,12 +46,12 @@ public class MyCircularQueue {
 
     public boolean deQueue() {
 
-        if(q.isEmpty()){
+        if(queue.isEmpty()){
             return false;
         }
-        q.remove(0);
-        rear = q.lastIndexOf(rear);
-        
+        queue.remove(0);
+        rear = queue.lastIndexOf(rear);
+
         int temp = 0;
         front = temp;
         rear = front;
@@ -57,21 +63,21 @@ public class MyCircularQueue {
 
     public int Front() {
 
-        return front;
+        return queue[front];
     }
 
     public int Rear() {
 
-        return rear;
+        return queue[rear];
     }
 
     public boolean isEmpty() {
 
-        return q.isEmpty();
+        return size ==0;
     }
 
     public boolean isFull() {
 
-        return q.size() == k;
+        return size == k;
     }
 }
