@@ -26,9 +26,10 @@ public class MyCircularQueue {
     public boolean enQueue(int value) {
 
 
-        if(q.isEmpty()) return -1;
+        if(q.isEmpty()) return false;
 
         q.offer(value);
+        rear = q.indexOf(value);
         int temp = 0;
         front = temp;
         rear = front;
@@ -40,9 +41,11 @@ public class MyCircularQueue {
     public boolean deQueue() {
 
         if(q.isEmpty()){
-            return -1;
+            return false;
         }
         q.remove(0);
+        rear = q.lastIndexOf(rear);
+        
         int temp = 0;
         front = temp;
         rear = front;
