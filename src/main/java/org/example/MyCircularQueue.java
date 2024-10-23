@@ -1,31 +1,74 @@
 package org.example;
 
+import java.util.Collections;
+import java.util.LinkedList;
+
+
 public class MyCircularQueue {
+
+    int k = 0;
+    int front = 0;
+    int rear = 0;
+
+    LinkedList<Integer> q = new LinkedList<>();
+
+
+
     public MyCircularQueue(int k) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        this.k =k;
+        for(int i = 0; i<k;i++){
+            q.add(i);
+        }
+
+
     }
 
     public boolean enQueue(int value) {
-        throw new UnsupportedOperationException("Not implemented yet");
+
+
+        if(q.isEmpty()) return -1;
+
+        q.offer(value);
+        int temp = 0;
+        front = temp;
+        rear = front;
+        return true;
+
     }
 
+
     public boolean deQueue() {
-        throw new UnsupportedOperationException("Not implemented yet");
+
+        if(q.isEmpty()){
+            return -1;
+        }
+        q.remove(0);
+        int temp = 0;
+        front = temp;
+        rear = front;
+        return true;
+
+
+
     }
 
     public int Front() {
-        throw new UnsupportedOperationException("Not implemented yet");
+
+        return front;
     }
 
     public int Rear() {
-        throw new UnsupportedOperationException("Not implemented yet");
+
+        return rear;
     }
 
     public boolean isEmpty() {
-        throw new UnsupportedOperationException("Not implemented yet");
+
+        return q.isEmpty();
     }
 
     public boolean isFull() {
-        throw new UnsupportedOperationException("Not implemented yet");
+
+        return q.size() == k;
     }
 }
